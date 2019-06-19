@@ -1,0 +1,45 @@
+// https://www.youtube.com/watch?v=HxaD_trXwRE
+// https://stackoverflow.com/questions/8422146/go-how-to-create-a-parser
+// https://github.com/pingcap/tidb
+// https://pingcap.com/blog-cn/#%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB
+// https://www.cnblogs.com/ghjbk/p/6953619.html
+// https://www.cnblogs.com/wunaozai/p/3869101.html
+// https://blog.csdn.net/qq_20996105/article/details/81365272
+// https://github.com/GitRainy/ifxqlyacc/blob/master/sql.y
+// https://superisaac.iteye.com/blog/600167
+// go get -u github.com/golang/tools/cmd/goyacc
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+)
+
+type baseFunctionClass struct {
+	funcName string
+	minArgs  int
+	maxArgs  int
+}
+type someFunc struct {
+	baseFunctionClass
+}
+
+type builtinFunc interface {
+	// getFunction gets a function signature by the types and the counts of given arguments.
+	getFunction(ctx context.Context, args ...string) ([]string, error)
+}
+
+var (
+	_ builtinFunc = &someFunc{}
+)
+
+func (sf *someFunc) getFunction(ctx context.Context, args ...string) ([]string, error) {
+	return args, errors.New("dummy err")
+}
+func main() {
+	bf := &someFunc{}
+	bfc, err := bf.getFunction(context.Background(), "string", "another string")
+	fmt.Println(len(bfc))
+	fmt.Println(bfc, err)
+}
