@@ -45,3 +45,14 @@ func (e Event) Start() {
 	msg := e.Greeter.Greet()
 	fmt.Println(msg)
 }
+
+type Event2 struct {
+	Greeter Greeter
+}
+
+func NewEvent2(g Greeter) (Event2, error) {
+	if g.Grumpy {
+		return Event2{}, errors.New("could not create event2: event greeter is grumpy")
+	}
+	return Event2{Greeter: g}, nil
+}

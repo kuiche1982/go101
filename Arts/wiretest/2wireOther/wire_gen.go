@@ -22,15 +22,15 @@ func InitEvent(param string) (lib.Event, error) {
 	return event, nil
 }
 
-func InitEvent2(param string) (lib.Event, error) {
+func InitEvent2(param string) (lib.Event2, error) {
 	message := _wireMessageValue
 	greeter := lib.Greeter{
 		Message: message,
 	}
-	event := lib.Event{
+	event2 := lib.Event2{
 		Greeter: greeter,
 	}
-	return event, nil
+	return event2, nil
 }
 
 var (
@@ -39,4 +39,4 @@ var (
 
 // wire.go:
 
-var wireSet = wire.NewSet(wire.Value(lib.Message("some message")), wire.Struct(new(lib.Greeter), "Message"), wire.Struct(new(lib.Event), "Greeter"))
+var wireSet = wire.NewSet(wire.Value(lib.Message("some message")), wire.Struct(new(lib.Greeter), "Message"), wire.Struct(new(lib.Event), "Greeter"), wire.Struct(new(lib.Event2), "Greeter"))
