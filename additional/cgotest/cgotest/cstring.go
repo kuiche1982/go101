@@ -1,14 +1,12 @@
-package cgotest
+package main
+
 // if your program uses any //export directives, then the C code in the comment may only include declarations (extern int f();), not definitions (int f() { return 1; }). You can use //export directives to make Go functions accessible to C code.
 
 // #include <stdio.h>
 // #include <stdlib.h>
-// static void myprint(char* s) {
-//   printf("%s\n", s);
-// }
+// #include "print.c"
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -19,3 +17,12 @@ func Print(s string) {
 	C.fputs(cs, (*C.FILE)(C.stdout))
 	C.myprint(cs)
 }
+
+
+func main() {
+	Print("abcd")
+	Print("efgh")
+}
+
+// ldd for linux 
+// otool -L 
