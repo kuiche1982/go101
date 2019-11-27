@@ -17,5 +17,9 @@ int main() {
     printf("%td\n", b.n);
 }
 
-
-// gcc -c hello.c -o hello.o && gcc hello.o cgotest.so -o cgotest && ./cgotest
+// ldd for linux 
+// otool -L cgotest.bin
+//// go build -buildmode=c-shared -o cgotest.so cexport.go
+//// go build -buildmode=c-archive -o cgotest.a cexport.go
+// rm cgotest.bin; gcc -c main.c -o hello.o && gcc hello.o cgotest.so -o cgotest.bin && ./cgotest.bin
+// rm cgotest.bin; gcc -c main.c -o hello.o && gcc hello.o cgotest.a -o cgotest.bin && ./cgotest.bin
