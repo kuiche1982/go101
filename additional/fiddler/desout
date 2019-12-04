@@ -1,0 +1,20 @@
+
+Ê
+
+test.protomaingoogle/protobuf/empty.protogoogle/protobuf/timestamp.protogoogle/api/annotations.protogoogle/protobuf/any.proto google/protobuf/descriptor.proto"ï
+HelloRequest
+i32 (Ri32
+i64 (Ri64
+b (Rb
+f (Rf
+d (Rd
+Name
+ (	RName#
+hr (2.main.HelloResponseRhr")
+HelloResponse
+Message (	RMessage"í
+SelfDescribingMessageI
+descriptor_set (2".google.protobuf.FileDescriptorSetRdescriptorSet.
+message (2.google.protobuf.AnyRmessage2Y
+HelloServiceI
+Hello.main.HelloRequest.main.HelloResponse"êÇ”‰ì"	/v1/hello:*bproto3
